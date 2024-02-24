@@ -61,6 +61,20 @@ sysinfo.txt
 *.unitypackage
 *.app
 
+# .DS_Store
+Library/
+obj/
+*.csproj
+*.pidb
+*.sln
+*.suo
+Temp/
+.vs/
+*.user
+MemoryCaptures/
+.vsconfig
+UserSettings/
+
 # Crashlytics generated file
 crashlytics-build.properties
 
