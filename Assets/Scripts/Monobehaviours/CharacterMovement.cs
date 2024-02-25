@@ -13,6 +13,10 @@ namespace Monobehaviours.CharacterMovement
         [SerializeField] private CreatureStats PlayerStats;
         [SerializeField] private CharacterController characterController;
         [SerializeField][Range(0,100)][Tooltip("This changes how fast the player moves with WASD")] private float walkSpeed = 10.0f;
+
+        private Vector3 MovementDirection;
+
+        private float airTime;
         #endregion
 
         #region UNITY
@@ -34,6 +38,7 @@ namespace Monobehaviours.CharacterMovement
         {
             MovePlayer();
             Jump();
+            characterController.Move(Time.deltaTime * MovementDirection);
         }
         #endregion
 
@@ -42,27 +47,28 @@ namespace Monobehaviours.CharacterMovement
         {
             float inputHorizontal = Input.GetAxisRaw("Horizontal");
             float inputVertical = Input.GetAxisRaw("Vertical");
-            if (inputHorizontal == 0 && inputVertical == 0) return;
+            if (inputHorizontal == 0 && inputVertical == 0)
+            {
+                MovementDirection = new Vector3(0, MovementDirection.y, 0);
+            }
 
-            Vector3 MoveDirection = transform.forward * inputVertical + transform.right * inputHorizontal;
-            MoveDirection = MoveDirection.normalized;
-            Debug.DrawLine(transform.position, transform.position + (transform.forward * 10f * inputVertical), Color.red);
-            Debug.DrawLine(transform.position, transform.position + (transform.right * 10f * inputHorizontal), Color.green);
-            Debug.DrawLine(transform.position, transform.position + (MoveDirection * 10f), Color.magenta);
-
-            characterController.Move(Time.deltaTime * walkSpeed * MoveDirection);
+            MovementDirection = (walkSpeed * ((transform.forward * inputVertical) + (transform.right * inputHorizontal)).normalized) + new Vector3(0, MovementDirection.y, 0);
         }
 
         public virtual void Jump()
         {
+            airTime += Time.deltaTime;
             if (Input.GetButton("Jump") && characterController.isGrounded)
             {
-                characterController.Move(new Vector3(0, 3, 0));
+                MovementDirection += new Vector3(0, 5, 0);
+                airTime = 0;
             }
-            if (!characterController.isGrounded)
+
+            if (!characterController.isGrounded && airTime > .5)
             {
-                characterController.Move(new Vector3(0, -9.8f * Time.deltaTime, 0));
+                MovementDirection += new Vector3(0, -9.8f * Time.deltaTime, 0);
             }
+
         }
         #endregion
 

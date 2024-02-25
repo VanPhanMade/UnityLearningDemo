@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DefaultPlayer
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 50
-  <Speed>k__BackingField: 10
+  <Speed>k__BackingField: 5
   <Armor>k__BackingField: 50
   <Name>k__BackingField: Bob
