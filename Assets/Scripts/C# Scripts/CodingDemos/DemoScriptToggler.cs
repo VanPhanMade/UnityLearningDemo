@@ -14,7 +14,8 @@ namespace CodingDemo
         CLASSES_FUNCTIONS,
         ABSTRACTCLASSES,
         ENUMS,
-        STACK_HEAP_STATIC_VALUES
+        STACK_HEAP_STATIC_VALUES,
+        CSHARP_SYNTAX
     }
     public class DemoScriptToggler : MonoBehaviour
     {
@@ -27,12 +28,16 @@ namespace CodingDemo
                     Debug.Log("None selected?");
                     break;
                 case TypeToggle.EVENTS:
-                    EventsDemo eventsDemo = new();
+                    EventDemo eventsDemo = new();
                     break;
                 case TypeToggle.INTERFACES:
                     InterfaceDemo interfaceDemo = new();
                     break;
                 case TypeToggle.INHERITENCE:
+                    break;
+                case TypeToggle.CSHARP_SYNTAX:
+                    CSHARP_SYNTAX cSharpSyntax = new();
+                    break;
 
                 default:
                     Debug.Log("Missing a case");

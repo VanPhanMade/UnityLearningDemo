@@ -7,7 +7,12 @@ namespace MeleeDemo
     public class MeleeAttack : MonoBehaviour
     {
         [SerializeField] private Animator AbilityAnimator;
+
         [SerializeField] private LayerMask Layer;
+
+        [SerializeField] private Abilities abilityStat;
+
+
         #region Unity
         void Update()
         {
@@ -25,30 +30,38 @@ namespace MeleeDemo
             // https://docs.unity3d.com/ScriptReference/Physics.Raycast.html
             if (Physics.Raycast(transform.position, transform.position + transform.forward, out RaycastHit HitData, 20))
             {
-
                 IDamageable Target = HitData.collider.GetComponent<IDamageable>();
                 if (Target != null)
                 {
-                    Target.TakeDamage(20);
+                    Target.TakeDamage(abilityStat.Damage);
                 }
-
             }
             else
             {
                 //https://docs.unity3d.com/ScriptReference/Physics.SphereCast.html
                 if (Physics.SphereCast(transform.position, 1, transform.position + transform.forward, out RaycastHit HitDataSphere, 20, Layer, QueryTriggerInteraction.UseGlobal))
                 {
+
                     IDamageable Target = HitDataSphere.transform.gameObject.GetComponent<IDamageable>();
                     if (Target != null)
                     {
                         Target.TakeDamage(20);
                     }
                 }
+                else
+                {
+                    var HitEnemies = Physics.OverlapSphere(transform.position + transform.forward, 1, Layer, QueryTriggerInteraction.UseGlobal);
+                    
+                    foreach (var Enemy in HitEnemies)
+                    {
+                        IDamageable Target = Enemy.transform.gameObject.GetComponent<IDamageable>();
+                        if (Target != null)
+                        {
+                            Target.TakeDamage(20);
+                        }
+                    }
+                }
             }
-
-            
-
-            
         }
         #endregion
 

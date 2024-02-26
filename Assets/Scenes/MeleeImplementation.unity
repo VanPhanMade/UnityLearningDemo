@@ -912,3 +912,4 @@ MonoBehaviour:
   Layer:
     serializedVersion: 2
     m_Bits: 64
+  abilityStat: {fileID: 11400000, guid: 2a8487815e19a0542aa7f22a3f0a5d15, type: 2}
