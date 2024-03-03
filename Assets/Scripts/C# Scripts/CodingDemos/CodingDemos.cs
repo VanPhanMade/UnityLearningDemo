@@ -16,7 +16,7 @@ namespace CodingDemo
         /// <summary>
         /// This is our constructor
         /// <para> This is an introductory paragraph. </para>
-        ///<para> This paragraph contains more details. </para>
+        /// <para> This paragraph contains more details. </para>
         /// </summary>
         public CSHARP_SYNTAX()
         {
@@ -30,10 +30,16 @@ namespace CodingDemo
             bool playerWon = true;
             int Score = playerWon ? 500 : 100;
 
+            // Adding lambdas
             OnHit += () => { Debug.Log("Syntax demo"); };
             OnHit?.Invoke();
+
+            // Function overloading
             Sum(1, 1);
             Sum(1, 1, Number);
+
+
+
             CSHARP_SYNTAX ConstructorInsideItself = new(10);
         }
 
@@ -72,12 +78,42 @@ namespace CodingDemo
                 FibonacciSeries(secondNumber, firstNumber + secondNumber, counter + 1, number);
             }
         }
-    }
-        #endregion
 
-        #region STACK HEAP STATIC VALUES DEMO
-        public class Stack_Heap_Static_ValuesDemo
+        void FireCannons()
         {
+
+            // Fire at the mouse position
+        }
+
+        void FireCannons(GameObject otherShip)
+        {
+
+        }
+
+        void Swap<T>(ref T lhs, ref T rhs)
+        {
+            // https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-methods
+            T temp;
+            temp = lhs;
+            lhs = rhs;
+            rhs = temp;
+        }
+    }
+    #endregion
+
+    #region Enums
+    public class EnumDemo
+    {
+        public EnumDemo()
+        {
+
+        }
+    }
+    #endregion
+
+    #region STACK HEAP STATIC VALUES DEMO
+    public class Stack_Heap_Static_ValuesDemo
+    {
         // Fields
         float NumberOnHeap = 0;
         StackClass stackClass = new();
@@ -152,6 +188,17 @@ namespace CodingDemo
             Debug.Log($"Static class value: {StackClass.StaticNum}");
         }
     }
+
+    public static class ExtensionMethods
+    {
+        // This will extend from transform
+        public static void ResetTransformation(this Transform transform)
+        {
+            transform.position = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            transform.localScale = Vector3.one;
+        }
+    }
     #endregion
 
     #region EVENT DEMO
@@ -171,6 +218,7 @@ namespace CodingDemo
             CheckNumberEvent = ExampleCheckNumberFunction;
 
             CheckNumberEvent?.Invoke(10);
+
             GlobalCheckNumberEvent_Keyworded?.Invoke(10);
 
             //ObserverClass observerClass = new();
@@ -178,12 +226,12 @@ namespace CodingDemo
 
         private bool ExampleCheckNumberFunction(int a)
         {
-            Debug.Log("Event demo check");
+
             return false;
         }
+
     }
 
-    // Used to observe scope
     public class ObserverClass
     {
         public event Action<int, bool> OnActionFired;
@@ -242,6 +290,83 @@ namespace CodingDemo
     }
     #endregion
 
+    #region ABSTRACT CLASSES DEMO
+    public class AbstractClassDemo
+    {
+        public AbstractClassDemo()
+        {
+            // Exercise 1: Create a raft + buoyant object
+
+            // Exercise 2: Create an aerial object + plane
+
+        }
+    }
+
+    // Direct Inheritance
+    class BuoyantObject
+    {
+        protected int size = 0;
+
+        public void Move()
+        {
+            Debug.Log($"Moving {size}' sized boat!");
+        }
+    }
+
+    class Raft : BuoyantObject
+    {
+
+    }
+
+    abstract class AerialObject
+    {
+        protected int size = 0;
+
+        // Must be public since variables are private by default
+        public abstract void Fly();
+    }
+
+    // Demonstrate virtual/overrideable functions
+    class SailBoat : BuoyantObject
+    {
+        public virtual void HoistSails()
+        {
+            Debug.Log("Raising ship sails!");
+        }
+    }
+
+    class PirateShip : SailBoat
+    {
+        //public virtual void HostSails()
+        //{
+        //    base.HoistSails();
+        //    Debug.Log("Raising Flag");
+        //}
+
+        //public override void HoistSails()
+        //{
+        //    base.HoistSails();
+        //    Debug.Log("Raising Flag");
+        //}
+    }
+
+    class BigPirateShip : PirateShip
+    {
+        //public override void HoistSails()
+        //{
+        //    base.HoistSails();
+        //    Debug.Log("Raising Flag");
+        //}
+    }
+
+    //public class SeaPlane : AerialObject, BuoyantObject
+    //{
+
+    //}
+    // This starts the introduction to interfaces
+
+    #endregion
+
     #region INTERFACE DEMO
     /// <summary>
     /// Display interface logic
@@ -273,6 +398,7 @@ namespace CodingDemo
             animal.Move();
         }
     }
+
     #region INTERFACES
     public class Squirrel : IMammal
     {
@@ -348,9 +474,6 @@ namespace CodingDemo
     #endregion
 
     
-
-    
-
 
 }
 

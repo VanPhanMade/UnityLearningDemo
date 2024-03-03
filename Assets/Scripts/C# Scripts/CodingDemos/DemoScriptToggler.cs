@@ -10,7 +10,6 @@ namespace CodingDemo
         NONE,
         EVENTS,
         INTERFACES,
-        INHERITENCE,
         CLASSES_FUNCTIONS,
         ABSTRACTCLASSES,
         ENUMS,
@@ -33,16 +32,22 @@ namespace CodingDemo
                 case TypeToggle.INTERFACES:
                     InterfaceDemo interfaceDemo = new();
                     break;
-                case TypeToggle.INHERITENCE:
-                    break;
                 case TypeToggle.CSHARP_SYNTAX:
                     CSHARP_SYNTAX cSharpSyntax = new();
+                    break;
+                case TypeToggle.ABSTRACTCLASSES: // Also covers inheritance
+                    AbstractClassDemo abstractClassDemo = new();
+                    break;
+                case TypeToggle.STACK_HEAP_STATIC_VALUES:
+                    Stack_Heap_Static_ValuesDemo stack_Heap_Static_ValuesDemo = new();
                     break;
 
                 default:
                     Debug.Log("Missing a case");
                     break;
             }
+
+            
         }
 
     }
