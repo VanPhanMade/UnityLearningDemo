@@ -6,7 +6,7 @@ namespace MeleeDemo
 {
     public class TargetDummy : MonoBehaviour, IDamageable
     {
-        void IDamageable.TakeDamage(float Damage)
+        public void TakeDamage(float Damage)
         {
             Debug.Log($"Ow you did {Damage} damage");
         }
@@ -14,7 +14,7 @@ namespace MeleeDemo
 
     public interface IDamageable
     {
-        void TakeDamage(float Damage);
+        public void TakeDamage(float Damage);
     }
 }
 

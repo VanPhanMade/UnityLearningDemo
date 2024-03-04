@@ -30,11 +30,15 @@ namespace MeleeDemo
             // https://docs.unity3d.com/ScriptReference/Physics.Raycast.html
             if (Physics.Raycast(transform.position, transform.position + transform.forward, out RaycastHit HitData, 20))
             {
-                IDamageable Target = HitData.collider.GetComponent<IDamageable>();
-                if (Target != null)
-                {
-                    Target.TakeDamage(abilityStat.Damage);
-                }
+                HitData.collider.GetComponent<TargetDummy>().TakeDamage(abilityStat.Damage);
+                //if (Target != null)
+                //{
+                //    Target.TakeDamage(abilityStat.Damage);
+                //}
+                //else
+                //{
+                //    Debug.Log("Missed");
+                //}
             }
             else
             {
@@ -66,5 +70,6 @@ namespace MeleeDemo
         #endregion
 
     }
+
 }
 

@@ -49,7 +49,13 @@ namespace CodingDemo
         /// <param name="a">Example parameter</param>
         public CSHARP_SYNTAX(int a)
         {
-            Debug.Log($"Constructor overloaded w/ param {a}");
+            // [1][3]
+            List<int> numbers = new List<int>();
+            numbers.Add(1); // 0
+            numbers.Add(3); // 1
+            Debug.Log($"{numbers[0]}");
+
+            Debug.Log($"Constructor overloaded w/ param {a}");   
             FibonacciSeries(2, 3, 1, 12);
         }
 
@@ -90,10 +96,10 @@ namespace CodingDemo
 
         }
 
-        void Swap<T>(ref T lhs, ref T rhs)
+        void Swap<Type>(ref Type lhs, ref Type rhs)
         {
             // https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-methods
-            T temp;
+            Type temp;
             temp = lhs;
             lhs = rhs;
             rhs = temp;
@@ -115,14 +121,13 @@ namespace CodingDemo
     public class Stack_Heap_Static_ValuesDemo
     {
         // Fields
-        float NumberOnHeap = 0;
+        private float NumberOnHeap = 0;
         StackClass stackClass = new();
 
         // Constructor
         public Stack_Heap_Static_ValuesDemo()
         {
             NumberOnHeap = 6;
-            //float NumberOnStack = 7;
             Init();
             StaticValueOutsider SomeClass = new();
         }
@@ -296,15 +301,21 @@ namespace CodingDemo
         public AbstractClassDemo()
         {
             // Exercise 1: Create a raft + buoyant object
+            // BuoyantObject buoyantObject = new BuoyantObject();
 
             // Exercise 2: Create an aerial object + plane
-
+            Biplane biplane = new Biplane();
         }
     }
 
     // Direct Inheritance
     class BuoyantObject
     {
+        public BuoyantObject()
+        {
+            Debug.Log("Created BuoyantObject");
+        }
+
         protected int size = 0;
 
         public void Move()
@@ -326,6 +337,14 @@ namespace CodingDemo
         public abstract void Fly();
     }
 
+    class Biplane : AerialObject
+    {
+        public override void Fly()
+        {
+            Debug.Log("Fly");
+        }
+    }
+
     // Demonstrate virtual/overrideable functions
     class SailBoat : BuoyantObject
     {
@@ -337,11 +356,11 @@ namespace CodingDemo
 
     class PirateShip : SailBoat
     {
-        //public virtual void HostSails()
-        //{
-        //    base.HoistSails();
-        //    Debug.Log("Raising Flag");
-        //}
+        public virtual void HostSails()
+        {
+            base.HoistSails();
+            Debug.Log("Raising Flag");
+        }
 
         //public override void HoistSails()
         //{
