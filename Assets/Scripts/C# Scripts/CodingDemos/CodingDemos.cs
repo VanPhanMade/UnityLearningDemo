@@ -107,13 +107,60 @@ namespace CodingDemo
     }
     #endregion
 
-    #region Enums
+    #region ENUMS
     public class EnumDemo
     {
         public EnumDemo()
         {
+            WeaponRarity weaponRarity = WeaponRarity.Common;
 
+            switch (weaponRarity)
+            {
+                case WeaponRarity.Common:
+                    break;
+                case WeaponRarity.Uncommon:
+                    break;
+                case WeaponRarity.Rare:
+                    break;
+                case WeaponRarity.Epic:
+                    break;
+                case WeaponRarity.Legendary:
+                    break;
+                default:
+                    break;
+            }
+
+            Debug.Log($"Points awarded: {AwardPoints(Achievement.QuadraKill)}");
+
+            //if(weaponRarity == null)
+            //{
+                
+            //}
         }
+
+        public int AwardPoints(Achievement achievement)
+        {
+            return (int)achievement;
+        }
+
+        public enum WeaponRarity
+        {
+            Common, 
+            Uncommon,
+            Rare,
+            Epic,
+            Legendary
+        }
+        public enum Achievement : int
+        {
+            Headshot = 10,
+            DoubleKill = 20,
+            TripleKill = 25,
+            QuadraKill = 30,
+            PentaKill = 50
+        }
+
+        private WeaponRarity? Nullable;
     }
     #endregion
 
@@ -492,7 +539,15 @@ namespace CodingDemo
     #endregion
     #endregion
 
-    
+    #region DOT_NET_DEMO
+    //https://dotnet.microsoft.com/en-us/languages/csharp
+
+    #endregion
+
+    #region OPERATOR_OVERLOADING_DEMO
+
+    #endregion
+
 
 }
 

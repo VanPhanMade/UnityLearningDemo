@@ -8,13 +8,18 @@ namespace CodingDemo
     enum TypeToggle
     {
         NONE,
+        VARIABLES,
         EVENTS,
         INTERFACES,
         CLASSES_FUNCTIONS,
         ABSTRACTCLASSES,
         ENUMS,
         STACK_HEAP_STATIC_VALUES,
-        CSHARP_SYNTAX
+        CSHARP_SYNTAX,
+        DOT_NET,
+        OPERATOR_OVERLOADING,
+        COMMON_DATASTRUCTURES,
+        DESIGN_PATTERNS
     }
     public class DemoScriptToggler : MonoBehaviour
     {
@@ -41,13 +46,13 @@ namespace CodingDemo
                 case TypeToggle.STACK_HEAP_STATIC_VALUES:
                     Stack_Heap_Static_ValuesDemo stack_Heap_Static_ValuesDemo = new();
                     break;
-
+                case TypeToggle.ENUMS:
+                    EnumDemo enumDemo = new();
+                    break;
                 default:
                     Debug.Log("Missing a case");
                     break;
             }
-
-            
         }
 
     }
