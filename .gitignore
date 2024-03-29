@@ -63,12 +63,12 @@ sysinfo.txt
 
 # .DS_Store
 Library/
+Temp/
 obj/
 *.csproj
 *.pidb
 *.sln
 *.suo
-Temp/
 .vs/
 *.user
 MemoryCaptures/

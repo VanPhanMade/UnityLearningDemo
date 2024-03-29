@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum ToggleSettings
-{
-    NONE,
-    MATH
-}
 public class BaseMonoBehaviour : MonoBehaviour
 {
     #region FIELDS
@@ -14,18 +9,29 @@ public class BaseMonoBehaviour : MonoBehaviour
     #endregion
 
     #region UNITY
-    protected virtual private void Awake()
+    private void Awake()
     {
         
     }
-    protected virtual void Start()
+    private void OnEnable()
     {
-
+        
     }
-
-    protected virtual void FixedUpdate()
+    private void OnDisable()
     {
-
+        
+    }
+    private void Start()
+    {
+        
+    }
+    private void FixedUpdate()
+    {
+        
+    }
+    private void LateUpdate()
+    {
+        
     }
     #endregion
 }

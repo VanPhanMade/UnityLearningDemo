@@ -28,7 +28,6 @@ public class CharacterAbilities : MonoBehaviour
     private bool bCannonsOpen = false;
 
     private AudioClip SFXCannonShot;
-
     #endregion
 
     #region Unity

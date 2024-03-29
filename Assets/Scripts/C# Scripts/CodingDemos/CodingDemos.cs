@@ -55,7 +55,7 @@ namespace CodingDemo
             numbers.Add(3); // 1
             Debug.Log($"{numbers[0]}");
 
-            Debug.Log($"Constructor overloaded w/ param {a}");   
+            Debug.Log($"Constructor overloaded w/ param {a}");
             FibonacciSeries(2, 3, 1, 12);
         }
 
@@ -134,7 +134,7 @@ namespace CodingDemo
 
             //if(weaponRarity == null)
             //{
-                
+
             //}
         }
 
@@ -145,7 +145,7 @@ namespace CodingDemo
 
         public enum WeaponRarity
         {
-            Common, 
+            Common,
             Uncommon,
             Rare,
             Epic,
@@ -291,11 +291,11 @@ namespace CodingDemo
         public event Func<bool, float> OnFuncFired;
         public ObserverClass()
         {
-            EventDemo.GlobalCheckNumberEvent += 
-            (int a) => 
-            { 
-                Debug.Log("Different class"); 
-                return true; 
+            EventDemo.GlobalCheckNumberEvent +=
+            (int a) =>
+            {
+                Debug.Log("Different class");
+                return true;
             };
 
             EventDemo.GlobalCheckNumberEvent = null;
@@ -308,14 +308,14 @@ namespace CodingDemo
             //};
             //EventDemo.GlobalCheckNumberEvent_Keyworded?.Invoke(10);
 
-            OnActionFired += (int a, bool b) => 
+            OnActionFired += (int a, bool b) =>
             {
                 string StringResult = "";
-                if(a < 10)
+                if (a < 10)
                 {
                     StringResult += $"A less than 10";
                 }
-                if(b)
+                if (b)
                 {
                     StringResult += $"B is true";
                 }
@@ -327,7 +327,7 @@ namespace CodingDemo
             OnFuncFired +=
             (bool conditional) =>
             {
-                if(conditional == true)
+                if (conditional == true)
                 {
                     return 100f;
                 }
@@ -335,7 +335,7 @@ namespace CodingDemo
             };
 
             Debug.Log($"Func Result: {OnFuncFired?.Invoke(false)}");
-            
+
 
 
         }
@@ -548,6 +548,50 @@ namespace CodingDemo
 
     #endregion
 
+    #region COMMON_DATASTRUCTURES
+    public class Common_DataStructures
+    {
+        //https://learn.microsoft.com/en-us/dotnet/standard/collections/
+        public Common_DataStructures()
+        {
+            List<int> numbersList = new();
+            numbersList.Add(12);
+            numbersList.Add(13);
+            //Debug.Log(numbersList[1]);
+            // [ 0 ]
+            // array int
+            // [ 12 ] [ 13 ] [ 14 ]
+            // [ 0  ] [ 1  ] [ 2  ]
+
+            // 2D array example
+            List<List<string>> String2DArray = new();
+            List<string> stringList = new();
+            stringList.Add("Ryan");
+
+            String2DArray.Add(stringList);
+            Debug.Log(String2DArray[0][0]);
+
+            //        [ key ]  [ value ] 
+            Dictionary<string, float> numbersDictionary = new Dictionary<string, float>();
+            // [ data1 ] [ data2 ] [ data3 ]
+            // [ key1 ]  [ key2  ] [ key3  ]
+            numbersDictionary.Add("Cruiser", 3);
+            float cruiser = numbersDictionary["Cruiser"];
+            //Debug.Log(cruiser);
+
+
+            Dictionary<string, List<string>> numbers2D_Dictionary = new Dictionary<string, List<string>>();
+            numbers2D_Dictionary.Add("Ryan", stringList);
+            Debug.Log(numbers2D_Dictionary["Ryan"][0]);
+
+
+
+            Stack<string> numbersStack = new Stack<string>();
+
+            Queue<string> numbersQueue = new Queue<string>();
+        }
+    }
+    #endregion
 
 }
 

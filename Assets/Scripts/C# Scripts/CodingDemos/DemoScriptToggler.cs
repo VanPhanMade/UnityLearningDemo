@@ -49,6 +49,9 @@ namespace CodingDemo
                 case TypeToggle.ENUMS:
                     EnumDemo enumDemo = new();
                     break;
+                case TypeToggle.COMMON_DATASTRUCTURES:
+                    Common_DataStructures common_DataStructures = new();
+                    break;
                 default:
                     Debug.Log("Missing a case");
                     break;
