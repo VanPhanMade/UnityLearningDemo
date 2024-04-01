@@ -569,7 +569,7 @@ namespace CodingDemo
             stringList.Add("Ryan");
 
             String2DArray.Add(stringList);
-            Debug.Log(String2DArray[0][0]);
+            //Debug.Log(String2DArray[0][0]);
 
             //        [ key ]  [ value ] 
             Dictionary<string, float> numbersDictionary = new Dictionary<string, float>();
@@ -579,16 +579,20 @@ namespace CodingDemo
             float cruiser = numbersDictionary["Cruiser"];
             //Debug.Log(cruiser);
 
-
             Dictionary<string, List<string>> numbers2D_Dictionary = new Dictionary<string, List<string>>();
             numbers2D_Dictionary.Add("Ryan", stringList);
-            Debug.Log(numbers2D_Dictionary["Ryan"][0]);
-
-
+            //Debug.Log(numbers2D_Dictionary["Ryan"][0]);
 
             Stack<string> numbersStack = new Stack<string>();
+            numbersStack.Push("Attacked");
+            numbersStack.Push("Jumped");
+            Debug.Log(numbersStack.Peek());
+            Debug.Log(numbersStack.Pop() + " & " + numbersStack.Pop());
 
             Queue<string> numbersQueue = new Queue<string>();
+            numbersQueue.Enqueue("Run");
+            numbersQueue.Enqueue("Walk");
+            Debug.Log(numbersQueue.Dequeue());
         }
     }
     #endregion
