@@ -20,6 +20,17 @@ namespace MeleeDemo
             {
                 AbilityAnimator.Play("MeleeAttack", 0);
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                AbilityAnimator.Play("HatSpin", 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Debug.Log("Q pressed");
+                AbilityAnimator.SetBool("FrontFlip", true);
+            }
         }
         #endregion
 

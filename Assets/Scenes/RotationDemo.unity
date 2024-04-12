@@ -1767,7 +1767,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InterpolationTime: 5
   Distance: 10
-  InterpolationType: 0
+  InterpolationType: 2
   CurveData:
     serializedVersion: 2
     m_Curve:
