@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1988246142225170655}
   - component: {fileID: 8649986112385959244}
   - component: {fileID: 195923628117917360}
+  - component: {fileID: 511356492602431754}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -84,6 +85,39 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878115577164108788}
   m_Enabled: 1
+--- !u!114 &511356492602431754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878115577164108788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1206513212749045391
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +327,6 @@ GameObject:
   - component: {fileID: 8273107826342467179}
   - component: {fileID: 7057565388384579815}
   - component: {fileID: 491881899283001412}
-  - component: {fileID: 8610979722096821475}
   m_Layer: 0
   m_Name: PlayableCube
   m_TagString: Untagged
@@ -501,18 +534,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8610979722096821475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3595550587569356779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424e5f83333a4ae438878c98f6e7eef3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9045909451659251306
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +596,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5a283ce3ff38c66498e824873adbb960, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

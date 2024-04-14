@@ -78,8 +78,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipTeam: 0
   radarCollisionRange: {fileID: 8658345582762614945}
-  SpottedShips: []
   DirectlySpottedShips: []
+  SpottedShips: []
+  ShipsThatSeeMe: []
 --- !u!1 &8658345583384194617
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5a283ce3ff38c66498e824873adbb960, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
