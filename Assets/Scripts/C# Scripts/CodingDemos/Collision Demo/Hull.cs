@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipHull : ExampleAbstractClass
+public class Hull : ExampleAbstractClass
 {
     public override GameObject ReturnParentShip()
     {
-        this.gameObject.DebugPosition();
-        Debug.Log("Hull found under radar!");
-        return transform.parent.gameObject;
+        return this.gameObject.GetParent();
     }
 
     public override void TakeDamage()

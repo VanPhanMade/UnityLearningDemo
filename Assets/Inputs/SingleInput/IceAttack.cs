@@ -10,6 +10,6 @@ public class IceAttack : BaseSingleInput
 
     public override void OnActionPerformed(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Ice blast!");
+
     }
 }

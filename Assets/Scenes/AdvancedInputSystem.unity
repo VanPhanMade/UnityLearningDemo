@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementType: {fileID: 9189935933166623867, guid: a8f05c2321696ad44957a8be453ffdd3, type: 3}
-  LightAttackType: {fileID: 8524739140002399149, guid: cdc5827b48c4a0044919cd7979f701ae, type: 3}
+  LightAttackType: {fileID: 8524739140002399149, guid: b3ff9c716378e714f97bc040fd8037b5, type: 3}
   HeavyAttackType: {fileID: 8524739140002399149, guid: b3ff9c716378e714f97bc040fd8037b5, type: 3}
 --- !u!1 &944044608
 GameObject:

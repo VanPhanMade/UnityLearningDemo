@@ -16,7 +16,9 @@ public class AdvancedInputTutorial : MonoBehaviour
     private event Action<InputAction.CallbackContext> LightAttack;
     private event Action<InputAction.CallbackContext> HeavyAttack;
     private event Action<InputAction.CallbackContext> Movement;
-    private event Action<InputAction.CallbackContext> Cancel;
+    private event Action<InputAction.CallbackContext> MovementCancel;
+
+    public static Vector2 CurrentDirectionInput;
 
     private void Awake()
     {
@@ -25,21 +27,26 @@ public class AdvancedInputTutorial : MonoBehaviour
 
     private void OnEnable()
     {
+        // Binds inputs to callbacks for input map
         ActionMap.Enable();
-        BaseLocomotion baseLocomotion = MovementType.GetComponent<BaseLocomotion>();
+        ActionMap.Player.LightAttack.performed += OnLightAttack;
+        ActionMap.Player.HeavyAttack.performed += OnHeavyAttack;
+        ActionMap.Player.Movement.canceled += OnMovementCancel;
+        ActionMap.Player.Movement.performed += OnMovementPerformed;
 
-        ActionMap.Player.Movement.canceled += baseLocomotion.OnMovementCancelled;
-        ActionMap.Player.Movement.performed += baseLocomotion.OnMovementPerformed;
+        // Binds actions from type of ability/movement we have equipped to input callback events
+        BaseLocomotion baseLocomotion = MovementType.GetComponent<BaseLocomotion>();
         baseLocomotion.playerTransform = transform;
+        Movement += baseLocomotion.OnMovementPerformed;
+        MovementCancel += baseLocomotion.OnMovementCancelled;
 
         BaseSingleInput lightAttack = LightAttackType.GetComponent<BaseSingleInput>();
+        lightAttack.playerTransform = transform;
         LightAttack += lightAttack.OnActionPerformed;
       
         BaseSingleInput heavyAttack = HeavyAttackType.GetComponent<BaseSingleInput>();
+        heavyAttack.playerTransform = transform;
         HeavyAttack += heavyAttack.OnActionPerformed;
-
-        ActionMap.Player.LightAttack.performed += OnLightAttack;
-        ActionMap.Player.HeavyAttack.performed += OnHeavyAttack;
     }
 
     private void OnDisable()
@@ -49,21 +56,25 @@ public class AdvancedInputTutorial : MonoBehaviour
 
     private void OnLightAttack(InputAction.CallbackContext ctx)
     {
-        LightAttack.Invoke(ctx);
+        LightAttack?.Invoke(ctx);
     }
 
     private void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
-        HeavyAttack.Invoke(ctx);
+        HeavyAttack?.Invoke(ctx);
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext ctx)
     {
-
+        AdvancedInputTutorial.CurrentDirectionInput = ctx.ReadValue<Vector2>();
+        Movement?.Invoke(ctx);
+        // Debug.Log($"Input x: {AdvancedInputTutorial.CurrentDirectionInput.x} , y {AdvancedInputTutorial.CurrentDirectionInput.y}");
     }
 
     private void OnMovementCancel(InputAction.CallbackContext ctx)
     {
-
+        MovementCancel?.Invoke(ctx);
     }
+
+
 }
