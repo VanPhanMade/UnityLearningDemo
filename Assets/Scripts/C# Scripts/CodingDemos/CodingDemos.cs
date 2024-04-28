@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 namespace CodingDemo
 {
@@ -540,7 +541,159 @@ namespace CodingDemo
     #endregion
 
     #region DOT_NET_DEMO
-    //https://dotnet.microsoft.com/en-us/languages/csharp
+    // https://dotnet.microsoft.com/en-us/languages/csharp
+    // https://learn.microsoft.com/en-us/dotnet/csharp/linq/
+    // https://www.youtube.com/watch?v=D2K0J5tiRtc&t=5s
+    // Using System.Linq
+    
+    public struct Stats
+    {
+        public int Damage;
+        public float AttackRange;
+        public int Strength;
+        public int Wisdom;
+    }
+    public enum Faction
+    {
+        Human, 
+        Goblin,
+        Orc, 
+        Elf,
+        NONE
+    }
+    public class NPC
+    {
+        public int Health;
+        public Stats Stats;
+        public Faction Faction;
+
+        public NPC()
+        {
+            Health = UnityEngine.Random.Range(0, 100);
+            Stats.Damage = UnityEngine.Random.Range(0, 100);
+            Stats.AttackRange = UnityEngine.Random.Range(0, 100);
+            Stats.Strength = UnityEngine.Random.Range(0, 100);
+            Stats.Wisdom = UnityEngine.Random.Range(0, 100);
+            Faction = (Faction)UnityEngine.Random.Range(0, 5);
+        }
+
+        public NPC(Faction _Faction, Stats _Stats, int _Health = 100)
+        {
+            Faction = _Faction;
+            Health = _Health;
+            Stats = _Stats;
+        }
+    }
+
+    public class DOT_NET_EXAMPLES
+    {
+        // https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable?view=net-8.0
+        public NPC[] Npcs = { new(), new(), new(), new(), new(), new(), new() };
+        public DOT_NET_EXAMPLES()
+        {
+            
+            List<NPC> demoNPCs = new();
+            NPC Jill = new();
+            NPC Joe = new();
+            NPC Steve = new();
+            NPC TJ = new();
+            NPC HiddenElf = new();
+            HiddenElf.Stats.Damage = 20;
+            HiddenElf.Faction = Faction.Elf;
+            demoNPCs.Add(Jill);
+            demoNPCs.Add(Joe);
+            demoNPCs.Add(Steve);
+            demoNPCs.Add(TJ);
+            //demoNPCs.Add(HiddenElf);
+
+            bool hasAtleastOneElf = demoNPCs.Any((npc) => npc.Faction == Faction.Elf /*&& npc.Stats.Damage > 10 */);
+            if (hasAtleastOneElf) Debug.Log("We have an elf npc");
+
+            double AverageHealth = Npcs.Average(npc => npc.Health);
+
+            List<NPC> HumanCharacters = Npcs.Where(npc => npc.Faction == Faction.Human).ToList();
+
+            double AverageHumanStrength = Npcs
+                .Where(npc => npc.Faction == Faction.Human)
+                .Average(npc => npc.Stats.Strength);
+
+            //int totalStrengthOfNPCs = Npcs.Sum(npc => npc.Stats.Strength);
+
+            //int numberOfHumans = Npcs.Count(npc => npc.Faction == Faction.Human);
+
+            //List<NPC> npcList = new List<NPC>();
+            //NPC Bob = new();
+            //npcList.Add(Bob);
+            //npcList.Add(Bob);
+            //List<NPC> uniqueNPCs = npcList.Distinct().ToList();
+
+            //NPC firstDeadNpc = npcList.FirstOrDefault(npc => npc.Health <= 0);
+
+            //var npcsByHealthMinToMax = npcList.OrderBy(npc => npc.Health); 
+            //List<NPC> npcsByFactionList = npcsByHealthMinToMax.ToList();
+
+            //var npcsByHealthMaxToMin = uniqueNPCs.OrderByDescending(npc => npc.Health);
+
+            //var randomOrderNPCs = uniqueNPCs.OrderBy(npc => UnityEngine.Random.Range(0,100));
+
+            //var npcsByFaction = npcList.GroupBy(npc => npc.Faction);
+            //foreach (var group in npcsByFaction)
+            //{
+
+            //    foreach (var npc in group)
+            //    {
+            //    }
+            //}
+
+            //var npcsWhoAreElves = Npcs.Where(npc => npc.Faction == Faction.Elf);
+            //var npcsWhoHaveNoHealth = Npcs.Where(npc => npc.Health <= 0);
+            //                                    // First collection     // Second collection
+            //var npcsWhoAreBothElvesAndDead = npcsWhoAreElves.Intersect(npcsWhoHaveNoHealth);
+
+            //int minStrength = Npcs.Min(npc => npc.Stats.Strength);
+            //int maxStrength = Npcs.Max(npc => npc.Stats.Strength);
+
+            //// Select - changes an array to array of a different type
+            //var uniqueActiveFactions = Npcs.Where(npc => npc.Health > 0).Select(npc => npc.Faction).Distinct();
+
+            //// Page example
+            //int pageSize = 10;
+            //int pageNumber = 1;
+            //var nextPageOfNpcs = Npcs
+            //    .Skip(pageSize * pageNumber)
+            //    .Take(pageSize);
+
+            //List<NPC> npcListConvert = Npcs.ToList();
+            //Npcs = npcListConvert.ToArray();
+
+            //Dictionary<Faction, List<NPC>> dictionaryNpcsByFaction = Npcs
+            //    .GroupBy(key => key.Faction, value => value)
+            //    .ToDictionary(key => key.Key, value => value.ToList());
+
+            //// https://learn.microsoft.com/en-us/archive/msdn-magazine/2017/march/net-framework-immutable-collections
+            //var npcsLookup = Npcs.ToLookup(key => key.Faction, value => value);
+
+            //var elves = npcsLookup[Faction.Elf];
+            //var orcs = npcsLookup[Faction.Orc];
+        }
+
+        public void CustomFunctionRepeater(Action someFunction, int iterations)
+        {
+            for (int i = 0; i < iterations; i++) someFunction?.Invoke();
+        }
+
+        public void ConditionalNodeExample(Func<bool> conditional, Action onSuccess, Action onFail)
+        {
+            if (conditional.Invoke())
+            {
+                onSuccess?.Invoke();
+            }
+            else
+            {
+                onFail?.Invoke();
+            }
+        }
+    }
 
     #endregion
 

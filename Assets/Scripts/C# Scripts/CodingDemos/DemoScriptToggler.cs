@@ -52,6 +52,9 @@ namespace CodingDemo
                 case TypeToggle.COMMON_DATASTRUCTURES:
                     Common_DataStructures common_DataStructures = new();
                     break;
+                case TypeToggle.DOT_NET:
+                    DOT_NET_EXAMPLES dOT_NET_EXAMPLES = new();
+                    break;
                 default:
                     Debug.Log("Missing a case");
                     break;
