@@ -606,7 +606,25 @@ namespace CodingDemo
             demoNPCs.Add(TJ);
             //demoNPCs.Add(HiddenElf);
 
-            bool hasAtleastOneElf = demoNPCs.Any((npc) => npc.Faction == Faction.Elf /*&& npc.Stats.Damage > 10 */);
+            int numberA = 6; numberA += 6;
+
+            int numberB = numberA;
+
+            // Left hand                    // Right hand                       // Two functions
+            Action exampleAction = () => { Debug.Log("Hello");  }; exampleAction += () => { Debug.Log("Hello");  };
+            // exampleAction.Invoke();
+            
+
+            Action<int> exampleActionWithIntArg = x => { Debug.Log( x * x ); };
+
+            CustomFunctionRepeaterWithIntArg(x => { Debug.Log(x * x); }, 4);
+
+            //SomeFunctionB(6);
+
+            // 6, 7, or 8
+            CustomFunctionRepeater( () => { Debug.Log("Hello"); }, 5);
+
+            bool hasAtleastOneElf = Npcs.Any((npc) => npc.Faction == Faction.Elf /*&& npc.Stats.Damage > 10 */);
             if (hasAtleastOneElf) Debug.Log("We have an elf npc");
 
             double AverageHealth = Npcs.Average(npc => npc.Health);
@@ -682,16 +700,35 @@ namespace CodingDemo
             for (int i = 0; i < iterations; i++) someFunction?.Invoke();
         }
 
+        public void CustomFunctionRepeaterWithIntArg(Action<int> someIntFunction, int iterations)
+        {
+            for (int i = 0; i < iterations; i++) someIntFunction.Invoke(i);
+        }
+
         public void ConditionalNodeExample(Func<bool> conditional, Action onSuccess, Action onFail)
         {
-            if (conditional.Invoke())
-            {
-                onSuccess?.Invoke();
-            }
-            else
-            {
-                onFail?.Invoke();
-            }
+            if (conditional.Invoke()) onSuccess?.Invoke();
+            else  onFail?.Invoke();
+        }
+
+        public void SomeFunction()
+        {
+            Debug.Log("I did something");
+        }
+                                // Arguments
+        public void SomeFunctionB(int blahblah)
+        {
+            Debug.Log($"Int arg: {blahblah}");
+        }
+
+        public void DebugSumAdd(int a, int b)
+        {
+            Debug.Log($"{ a + b}");
+        }
+
+        public int RandomNumberThing()
+        {
+            return 23109 + 12321;
         }
     }
 

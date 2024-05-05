@@ -10,6 +10,6 @@ public class PoisonAttack : BaseSingleInput
 
     public override void OnActionPerformed(InputAction.CallbackContext ctx)
     {
-
+        Debug.Log("Poison Attack");
     }
 }

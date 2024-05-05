@@ -1,0 +1,67 @@
+{
+    "name": "ShipInputs",
+    "maps": [
+        {
+            "name": "ShipThing",
+            "id": "fd0b765b-fa08-4bd6-91f2-5737217b82b3",
+            "actions": [
+                {
+                    "name": "Combo",
+                    "type": "Value",
+                    "id": "4244efd0-537f-4fd9-b24c-8458416fdd2d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "f7d9f719-b34e-4fa7-8c8d-f6feac61687e",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Combo",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "8eb1ab80-05ee-47bb-995b-a61a66636e53",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Combo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "up",
+                    "id": "1239ef40-060b-4d97-b40e-adb0c5c21d75",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Combo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "up",
+                    "id": "588216d3-da8d-4d1a-a12e-28174f431eeb",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Combo",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

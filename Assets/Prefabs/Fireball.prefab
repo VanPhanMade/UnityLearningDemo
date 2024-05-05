@@ -45,7 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a39d40980eb1745939c9152f393d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 4
+  projectileSpeed: 5
+  fireTrailSFX:
+    Guid:
+      Data1: 1301158119
+      Data2: 1327202026
+      Data3: 1631832729
+      Data4: 1391683173
+    Path: event:/FireballTrail
 --- !u!1 &5551535338322253254
 GameObject:
   m_ObjectHideFlags: 0

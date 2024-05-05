@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 public class FireAttack : BaseSingleInput
 {
@@ -14,7 +15,6 @@ public class FireAttack : BaseSingleInput
         GameObject spawnedProjectile = Instantiate(projectile);
         spawnedProjectile.transform.position = playerTransform.position + new Vector3(AdvancedInputTutorial.CurrentDirectionInput.x, AdvancedInputTutorial.CurrentDirectionInput.y, 0);
         spawnedProjectile.transform.forward = new Vector3(AdvancedInputTutorial.CurrentDirectionInput.x, AdvancedInputTutorial.CurrentDirectionInput.y, 0);
-
         FireballProjectile fireballProjectile = spawnedProjectile.GetComponent<FireballProjectile>();
     }
 }

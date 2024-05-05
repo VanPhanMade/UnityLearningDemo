@@ -47,6 +47,8 @@ public class AdvancedInputTutorial : MonoBehaviour
         BaseSingleInput heavyAttack = HeavyAttackType.GetComponent<BaseSingleInput>();
         heavyAttack.playerTransform = transform;
         HeavyAttack += heavyAttack.OnActionPerformed;
+
+        ActionMap.Player.Jump.performed += OnJumpPerformed;
     }
 
     private void OnDisable()
@@ -56,11 +58,13 @@ public class AdvancedInputTutorial : MonoBehaviour
 
     private void OnLightAttack(InputAction.CallbackContext ctx)
     {
+        Debug.Log("Light attack");
         LightAttack?.Invoke(ctx);
     }
 
     private void OnHeavyAttack(InputAction.CallbackContext ctx)
     {
+        Debug.Log("Heavy attack");
         HeavyAttack?.Invoke(ctx);
     }
 
@@ -74,6 +78,11 @@ public class AdvancedInputTutorial : MonoBehaviour
     private void OnMovementCancel(InputAction.CallbackContext ctx)
     {
         MovementCancel?.Invoke(ctx);
+    }
+
+    private void OnJumpPerformed(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("Jumped");
     }
 
 
