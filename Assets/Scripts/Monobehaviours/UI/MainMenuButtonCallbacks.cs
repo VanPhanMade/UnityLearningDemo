@@ -14,4 +14,13 @@ public class MainMenuButtonCallbacks : MonoBehaviour
         // https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.html
         SceneManager.LoadScene("AdvancedInputSystem");
     }
+
+    public void TravelToTutorialDelayed()
+    {
+        Invoke("TravelToTutorialLevel", .1f);
+    }
+    public void TravelToTutorialLevel()
+    {
+        SceneManager.LoadScene("TutorialDemo");
+    }
 }

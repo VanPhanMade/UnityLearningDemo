@@ -1,0 +1,65 @@
+{
+    "name": "RobotFighterInputs",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "3e00228d-84e0-4efd-85b0-a825faa8c456",
+            "actions": [
+                {
+                    "name": "PrimaryAction",
+                    "type": "Button",
+                    "id": "5c46f006-a3a7-4231-bf66-cce04ffd5e7a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondaryAction",
+                    "type": "Button",
+                    "id": "b5469f3b-9d35-4ff8-bd28-1656cd89d691",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "0304b3f3-ffd6-4462-9ed1-dd59b7a8b5d7",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryAction",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca4d9280-4e74-4cc8-89b9-0e50f88b2e38",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c136778-5502-4a32-9606-8dceb25b40eb",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

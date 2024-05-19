@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AdvancedInputSystem.unity
     guid: a4be141e5a0605945a178dd376bfa966
+  - enabled: 1
+    path: Assets/Scenes/TutorialDemo.unity
+    guid: baadf1ed5b06500439bb7e39912904c0
   m_configObjects: {}

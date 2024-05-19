@@ -588,10 +588,9 @@ namespace CodingDemo
     public class DOT_NET_EXAMPLES
     {
         // https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable?view=net-8.0
-        public NPC[] Npcs = { new(), new(), new(), new(), new(), new(), new() };
+        public NPC[] Npcs = { new(), new(), new(), new(), new(), new(), new() }; 
         public DOT_NET_EXAMPLES()
         {
-            
             List<NPC> demoNPCs = new();
             NPC Jill = new();
             NPC Joe = new();
@@ -613,19 +612,30 @@ namespace CodingDemo
             // Left hand                    // Right hand                       // Two functions
             Action exampleAction = () => { Debug.Log("Hello");  }; exampleAction += () => { Debug.Log("Hello");  };
             // exampleAction.Invoke();
-            
 
-            Action<int> exampleActionWithIntArg = x => { Debug.Log( x * x ); };
+            Action<int, int> exampleActionWithIntArg = 
+                (x, y) => { Debug.Log( x * x ); };
 
-            CustomFunctionRepeaterWithIntArg(x => { Debug.Log(x * x); }, 4);
+            Func<int, string ,int> funcExample = (someNumber, someString) => { return someNumber + 2; };
 
-            //SomeFunctionB(6);
+            int exampleCalculation = funcExample.Invoke(6, "MyName");
+
+            CustomFunctionRepeaterWithIntArg( x => { Debug.Log(x * x); }, 4);
+
+            //SomeFunctionB(6); 
 
             // 6, 7, or 8
             CustomFunctionRepeater( () => { Debug.Log("Hello"); }, 5);
 
-            bool hasAtleastOneElf = Npcs.Any((npc) => npc.Faction == Faction.Elf /*&& npc.Stats.Damage > 10 */);
+            bool hasAtleastOneElf = Npcs.Any(
+                (npc) =>
+                {
+                    return npc.Faction == Faction.Elf /*&& npc.Stats.Damage > 10 */;
+                }
+                );
+
             if (hasAtleastOneElf) Debug.Log("We have an elf npc");
+
 
             double AverageHealth = Npcs.Average(npc => npc.Health);
 
