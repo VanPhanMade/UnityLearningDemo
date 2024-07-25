@@ -19,7 +19,8 @@ namespace CodingDemo
         DOT_NET,
         OPERATOR_OVERLOADING,
         COMMON_DATASTRUCTURES,
-        DESIGN_PATTERNS
+        DESIGN_PATTERNS,
+        MULTITHREADING
     }
     public class DemoScriptToggler : MonoBehaviour
     {
@@ -55,6 +56,9 @@ namespace CodingDemo
                 case TypeToggle.DOT_NET:
                     DOT_NET_EXAMPLES dOT_NET_EXAMPLES = new();
                     break;
+                case TypeToggle.MULTITHREADING:
+                    MultiThreadDemo multiThreadDemo = new();
+                    break;
                 default:
                     Debug.Log("Missing a case");
                     break;
@@ -62,5 +66,6 @@ namespace CodingDemo
         }
 
     }
+
 }
 

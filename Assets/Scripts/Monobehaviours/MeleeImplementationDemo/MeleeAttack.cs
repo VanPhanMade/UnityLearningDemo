@@ -12,7 +12,6 @@ namespace MeleeDemo
 
         [SerializeField] private Abilities abilityStat;
 
-
         #region Unity
         void Update()
         {

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using Unity.Jobs;
+using Unity.Collections;
+using Unity.Burst;
 
 namespace CodingDemo
 {
@@ -86,17 +89,6 @@ namespace CodingDemo
             }
         }
 
-        void FireCannons()
-        {
-
-            // Fire at the mouse position
-        }
-
-        void FireCannons(GameObject otherShip)
-        {
-
-        }
-
         void Swap<Type>(ref Type lhs, ref Type rhs)
         {
             // https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-methods
@@ -111,6 +103,7 @@ namespace CodingDemo
     #region ENUMS
     public class EnumDemo
     {
+        public int var5 = 16;
         public EnumDemo()
         {
             WeaponRarity weaponRarity = WeaponRarity.Common;
@@ -255,7 +248,7 @@ namespace CodingDemo
     #endregion
 
     #region EVENT DEMO
-    public class EventDemo
+    public class EventDemo 
     {
         // https://www.youtube.com/watch?v=J01z1F-du-E&t=229s
         public delegate bool OnCheckNumber(int a); // Type signature
@@ -269,14 +262,13 @@ namespace CodingDemo
             CheckNumberEvent += ExampleCheckNumberFunction;
             CheckNumberEvent = null;
             CheckNumberEvent = ExampleCheckNumberFunction;
-
             CheckNumberEvent?.Invoke(10);
-
             GlobalCheckNumberEvent_Keyworded?.Invoke(10);
 
             //ObserverClass observerClass = new();
         }
 
+        // byte 
         private bool ExampleCheckNumberFunction(int a)
         {
 
@@ -284,6 +276,8 @@ namespace CodingDemo
         }
 
     }
+
+    
 
     public class ObserverClass
     {
@@ -797,5 +791,66 @@ namespace CodingDemo
     }
     #endregion
 
+    #region MULTITHREADING
+    public class MultiThreadDemo
+    {
+        public MultiThreadDemo()
+        {
+
+            float startTimeRegular = Time.realtimeSinceStartup;
+            for (int i = 0; i < 10; i++)
+            {
+                BeefyCalculation();
+            }
+            // requires collections from package manager
+            Debug.Log($"Regular speed: { (Time.realtimeSinceStartup - startTimeRegular) * 1000f } ms");
+
+            float startTime = Time.realtimeSinceStartup;
+            NativeList<JobHandle> jobHandleList = new NativeList<JobHandle>(Allocator.Temp);
+            for (int i = 0; i < 10; i++)
+            {
+                JobHandle jobHandle = BeefyCalculationAsJob();
+                jobHandleList.Add(jobHandle);
+                //jobHandle.Complete();
+            }
+            JobHandle.CompleteAll(jobHandleList);
+            jobHandleList.Dispose();
+            Debug.Log($"Jobs/burst speed: { (Time.realtimeSinceStartup - startTime) * 1000f } ms");
+
+        }
+
+        private void BeefyCalculation()
+        {
+            float a = 0f;
+            for (int i = 0; i < 50000; i++)
+            {
+                a = (float)Math.Exp(Math.Sqrt(a));
+            }
+        }
+
+        private JobHandle BeefyCalculationAsJob()
+        {
+            JobExample job = new JobExample();
+            return job.Schedule();
+        }
+    }
+
+    // Structs are always passed by a soft copy/reference
+    [BurstCompile] // From burst library to condense down to assembly
+    public struct JobExample : IJob 
+    {
+
+        // Can include fields
+        // reference to vector
+        public void Execute()
+        {
+            float a = 0f;
+            for (int i = 0; i < 50000; i++)
+            {
+                a = (float)Math.Exp(Math.Sqrt(a));
+            }
+        }
+    }
+    #endregion
 }
 

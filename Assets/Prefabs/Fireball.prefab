@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8910272047455683928}
   - component: {fileID: 4658097955663603520}
+  - component: {fileID: 5100205069360208370}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -52,7 +53,38 @@ MonoBehaviour:
       Data2: 1327202026
       Data3: 1631832729
       Data4: 1391683173
-    Path: event:/FireballTrail
+    Path: event:/SFX/FireballTrail
+--- !u!114 &5100205069360208370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552256366561024442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1301158119
+      Data2: 1327202026
+      Data3: 1631832729
+      Data4: 1391683173
+    Path: event:/SFX/FireballTrail
+  Event: 
+  PlayEvent: 1
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 2.17
+  OverrideMaxDistance: 9.79
 --- !u!1 &5551535338322253254
 GameObject:
   m_ObjectHideFlags: 0

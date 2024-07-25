@@ -43,6 +43,7 @@ public class TutorialCharacterInputs : MonoBehaviour
         ActionMap.Enable();
         ActionMap.Player.PrimaryAction.performed += OnMovement;
         ActionMap.Player.SecondaryAction.performed += OnAttack;
+
         ChangeTutorialText("Move around with left click");
 
         // Initial info

@@ -15,7 +15,7 @@ public class AdvancedInputTutorial : MonoBehaviour
 
     private event Action<InputAction.CallbackContext> LightAttack;
     private event Action<InputAction.CallbackContext> HeavyAttack;
-    private event Action<InputAction.CallbackContext> Movement;
+    private event Action<InputAction.CallbackContext> Movement; 
     private event Action<InputAction.CallbackContext> MovementCancel;
 
     public static Vector2 CurrentDirectionInput;
@@ -43,7 +43,7 @@ public class AdvancedInputTutorial : MonoBehaviour
         BaseSingleInput lightAttack = LightAttackType.GetComponent<BaseSingleInput>();
         lightAttack.playerTransform = transform;
         LightAttack += lightAttack.OnActionPerformed;
-      
+
         BaseSingleInput heavyAttack = HeavyAttackType.GetComponent<BaseSingleInput>();
         heavyAttack.playerTransform = transform;
         HeavyAttack += heavyAttack.OnActionPerformed;
