@@ -38,6 +38,7 @@ public class TutorialCharacterInputs : MonoBehaviour
     {
         ActionMap.Disable();
     }
+
     private void OnEnable()
     {
         ActionMap.Enable();

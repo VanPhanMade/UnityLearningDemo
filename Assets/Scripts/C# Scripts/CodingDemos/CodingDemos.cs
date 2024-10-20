@@ -4,8 +4,10 @@ using UnityEngine;
 using System;
 using System.Linq;
 using Unity.Jobs;
+using UnityEngine.Jobs;
 using Unity.Collections;
 using Unity.Burst;
+using Unity.Mathematics;
 
 namespace CodingDemo
 {
@@ -796,7 +798,7 @@ namespace CodingDemo
     {
         public MultiThreadDemo()
         {
-
+            #region Scenario1
             float startTimeRegular = Time.realtimeSinceStartup;
             for (int i = 0; i < 10; i++)
             {
@@ -816,7 +818,24 @@ namespace CodingDemo
             JobHandle.CompleteAll(jobHandleList);
             jobHandleList.Dispose();
             Debug.Log($"Jobs/burst speed: { (Time.realtimeSinceStartup - startTime) * 1000f } ms");
+            #endregion
 
+            #region Scenario2
+            //SwarmingJob swarmingJob = new SwarmingJob()
+            //{
+            //    PlayerPos = Vector3.zero,
+            //    DeltaTime = Time.deltaTime,
+            //    DistanceThreshold = 10f,
+            //    MoveSpeed = 20f
+            //};
+
+            //TransformAccessArray enemyTransforms = new();
+            //GameObject enemyReference = new();
+            //enemyTransforms.Add(enemyReference.transform);
+
+            //JobHandle swarmingHandler = swarmingJob.Schedule(enemyTransforms);
+            //swarmingHandler.Complete();
+            #endregion
         }
 
         private void BeefyCalculation()
@@ -851,6 +870,36 @@ namespace CodingDemo
             }
         }
     }
+
+
+    // Unity Engine.Jobs
+    //[BurstCompile]
+    //public struct SwarmingJob : IJobParallelForTransform
+    //{
+    //    [ReadOnly] public Vector3 PlayerPos;
+    //    [ReadOnly] public float DeltaTime;
+    //    [ReadOnly] public float DistanceThreshold;
+    //    [ReadOnly] public float MoveSpeed;
+
+    //    public void Execute(int index, TransformAccess transform)
+    //    {
+    //        Vector3 direction = Vector3.Normalize(PlayerPos - transform.position);
+    //        double angle = Math.Atan2(direction.y, direction.x);
+    //        angle -= Mathf.Deg2Rad * 90f;
+    //        angle *= Mathf.Rad2Deg;
+
+    //        Quaternion lookRotation = Quaternion.AngleAxis((float)angle, new Vector3(0, 0, 1));
+    //        transform.rotation = lookRotation;
+
+    //        float distance = Vector3.Distance(PlayerPos, transform.position);
+    //        Vector3 newPositon = transform.position - direction * DeltaTime * MoveSpeed;
+    //        Vector3 maskedPosition = distance <= DistanceThreshold ? transform.position : newPositon;
+
+    //        transform.position = maskedPosition;
+    //    }
+    //}
+
+
     #endregion
 }
 

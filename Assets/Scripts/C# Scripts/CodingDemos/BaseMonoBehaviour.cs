@@ -19,7 +19,7 @@ public class BaseMonoBehaviour : MonoBehaviour
     }
     private void OnDisable()
     {
-        
+
     }
     private void Start()
     {
@@ -32,6 +32,11 @@ public class BaseMonoBehaviour : MonoBehaviour
     private void LateUpdate()
     {
         
+    }
+
+    private void Update()
+    {
+
     }
     #endregion
 }
